@@ -37,7 +37,7 @@
 
         /* Add padding to body to compensate for fixed header */
         body {
-            padding-top: 80px;
+            padding-top: 90px;
         }
 
         .header-content-wrapper {
@@ -47,7 +47,7 @@
             justify-content: space-between;
             align-items: center;
             padding: 0 20px;
-            height: 80px;
+            height: 125px;
         }
 
         .site-branding {
@@ -664,74 +664,145 @@
                 font-size: 8px;
             }
         }
+		.two-row-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0;
+}
+/* Header White Version */
+.white-header {
+  background: #ffffff;
+  color: #404040;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+  position: fixed;
+  width: 100%;
+  z-index: 1000;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+/* Header Wrapper */
+.two-row-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0;
+}
+
+/* Top Row */
+.top-row {
+  position: relative;
+  width: 100%;
+  height: 90px; /* Increased from 60px */
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0 30px;
+}
+
+/* Logo Centered */
+.logo-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* Vertically and horizontally center */
+  z-index: 2;
+}
+
+
+.logo-center img.custom-logo {
+  height: 50px;
+  width: auto;
+  display: block;
+  filter: invert(1); /* Keeps it visible on white background */
+}
+
+/* Right Side Links */
+.top-right-links {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.top-right-links a {
+  color: #000;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* Bottom Row Menu */
+.bottom-row {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: 10px 0;
+  border-top: 1px solid #e0e0e0;
+}
+
+.nav-menu {
+  display: flex;
+  gap: 40px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.nav-menu li a {
+  color: #000000;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.nav-menu li a:hover {
+  text-decoration: underline;
+}
+
+
     </style>
 </head>
 <body>
     <!-- Header -->
-    <header class="site-header">
-        <div class="main-navigation-container">
-            <div class="header-content-wrapper">
-                <div class="site-branding">
-                    <a href="https://openmineral.com/" class="custom-logo-link">
-                        <img src="https://i0.wp.com/openmineral.com/wp-content/uploads/2024/08/cropped-Logo_vertica_white.png?fit=939%2C419&ssl=1" 
-                             alt="Openmineral" class="custom-logo">
-                    </a>
-                </div>
+           
+		   
+		   <header class="main-navigation-container white-header">
+  <div class="header-content-wrapper two-row-header">
+    
+    <div class="top-row">
+      <div class="logo-center">
+        <a href="/">
+          <img src="https://i0.wp.com/openmineral.com/wp-content/uploads/2024/08/cropped-Logo_vertica_white.png?fit=939%2C419&ssl=1"
+               alt="Openmineral" class="custom-logo">
+        </a>
+      </div>
+      <div class="top-right-links">
+        <a href="https://openmineral.com/location/#contact-us">Contact Us</a>
+        <a href="#search-open" aria-label="search">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="16" viewBox="0 -4 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>    | Search    </a>
+                        
+      </div>
+    </div>
 
-                <nav class="main-navigation">
-                    <button class="menu-toggle">☰</button>
-                    <ul class="nav-menu">
-                        <li class="menu-item menu-item-has-children">
-                            <a href="https://openmineral.com/at-a-glance/">Who We Are</a>
-                            <ul class="sub-menu">
-                                <li><a href="https://openmineral.com/at-a-glance/">At a Glance</a></li>
-                                <li><a href="https://openmineral.com/leadership/">Leadership</a></li>
-                                <li><a href="https://openmineral.com/ethics-compliance/">Ethics & Compliance</a></li>
-                                <li><a href="https://openmineral.com/location/">Locations</a></li>
-                            </ul>
-                        </li>
-                        <li class="menu-item menu-item-has-children">
-                            <a href="https://openmineral.com/metal-trading/">Our Solutions</a>
-                            <ul class="sub-menu">
-                                <li><a href="https://openmineral.com/metal-trading/">Metal Trading</a></li>
-                                <li><a href="https://openmineral.com/data-driven-solutions/">Data-Driven Solutions</a></li>
-                                <li><a href="https://openmineral.com/partnering/">Partnering</a></li>
-                            </ul>
-                        </li>
-                        <li class="menu-item menu-item-has-children">
-                            <a href="https://openmineral.com/for-miners/">Our Services</a>
-                            <ul class="sub-menu">
-                                <li><a href="https://openmineral.com/for-miners/">For Miners</a></li>
-                                <li><a href="https://openmineral.com/for-smelters/">For Smelters</a></li>
-                                <li><a href="https://openmineral.com/for-traders/">For Traders</a></li>
-                                <li><a href="https://openmineral.com/for-engineers/">For Engineering Companies</a></li>
-                            </ul>
-                        </li>
-                        <li class="menu-item">
-                            <a href="https://openmineral.com/investor-opportunities/">Investor Opportunities</a>
-                        </li>
-                        <li class="menu-item menu-item-has-children">
-                            <a href="https://openmineral.com/career-opportunities">Careers</a>
-                            <ul class="sub-menu">
-                                <li><a href="https://openmineral.com/career-opportunities/#application">Apply Now</a></li>
-                                <li><a href="https://openmineral.com/career-opportunities/#vacancies">Open Vacancies</a></li>
-                            </ul>
-                        </li>
-                        <li class="menu-item">
-                            <a href="https://openmineral.com/news-reports/">News & Reports</a>
-                        </li>
-                        <li class="search-icon">
-                            <a href="#search-open" aria-label="search">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>        </a>
-                        </li>
-                        <li class="call-to-action wp-block-button">
-                            <a class="wp-block-button__link" href="https://openmineral.com/location/#contact-us">Contact Us</a>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
-        </div>
-    </header>
+    <nav class="bottom-row">
+      <ul class="nav-menu">
+        <li><a href="https://openmineral.com/at-a-glance/">About Us</a></li>
+        <li><a href="https://openmineral.com/metal-trading/">Our Solutions</a></li>
+        <li><a href="https://openmineral.com/for-miners/">Our Services</a></li>
+        <li><a href="https://openmineral.com/investor-opportunities/">Investor Opportunities</a></li>
+        <li><a href="https://openmineral.com/career-opportunities">Careers</a></li>
+        <li><a href="https://openmineral.com/news-reports/">News & Reports</a></li>
+      </ul>
+    </nav>
+
+  </div>
+</header>
+
+
+
+
 
     <!-- Hero Section -->
     <section class="hero-section">
