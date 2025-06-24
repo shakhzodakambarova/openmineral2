@@ -6,178 +6,325 @@
     <title>Home - Openmineral</title>
     <style>
         * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-        body {
-            font-family: 'Raleway', sans-serif;
-            font-size: 18px;
-            line-height: 1.7;
-            color: #404040;
-            background: #ffffff;
-        }
+body {
+  font-family: 'Raleway', sans-serif;
+  font-size: 18px;
+  line-height: 1.7;
+  color: #404040;
+  background: #ffffff;
+  padding-top: 100px;
+}
 
-        /* Header Styles - Your Figma Design */
-        .main-navigation-container {
-            background: #002134;
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
-        }
+.main-navigation-container {
+  background-color: #fff;
+  color: #000;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+}
 
-        .main-navigation-container.scrolled {
-            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
-        }
+.main-navigation-container.scrolled-dark {
+  background-color: #000;
+  color: #fff;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+}
 
-        /* Add padding to body to compensate for fixed header */
-        body {
-            padding-top: 90px;
-        }
+.header-content-wrapper,
+.stats-container,
+.awards-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
 
-        .header-content-wrapper {
-            max-width: 1280px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 20px;
-            height: 125px;
-        }
+.header-content-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 130px;
+}
 
-        .site-branding {
-            display: flex;
-            align-items: center;
-        }
+.site-branding,
+.main-navigation,
+.top-right-links {
+  display: flex;
+  align-items: center;
+}
 
-        .custom-logo-link {
-            display: block;
-        }
+.custom-logo-link {
+  display: block;
+}
 
-        .custom-logo {
-            height: 50px;
-            width: auto;
-        }
+.custom-logo {
+  height: 70px;
+  width: auto;
+}
 
-        .main-navigation {
-            display: flex;
-            align-items: center;
-        }
+.nav-menu {
+  display: flex;
+  list-style: none;
+  gap: 120px;
+  padding: 0;
+  margin: 0;
+}
 
-        .nav-menu {
-            display: flex;
-            list-style: none;
-            align-items: center;
-            gap: 35px;
-            margin: 0;
-            padding: 0;
-        }
+.menu-item {
+  position: relative;
+}
 
-        .menu-item {
-            position: relative;
-        }
+.nav-menu li a,
+.top-right-links a {
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 16px;
+  padding: 10px 0;
+  color: #000;
+  transition: color 0.3s ease;
+}
 
-        .menu-item a {
-            color: #ffffff;
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 16px;
-            transition: color 0.3s ease;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            padding: 10px 0;
-        }
+.nav-menu li a:hover,
+.top-right-links a:hover {
+  color: #01b2b8;
+}
 
-        .menu-item a:hover {
-            color: #01b2b8;
-        }
+.menu-item-has-children > a::after {
+  content: '▼';
+  font-size: 12px;
+  margin-left: 5px;
+  transition: transform 0.3s ease;
+}
 
-        .menu-item-has-children > a::after {
-            content: '▼';
-            font-size: 12px;
-            transition: transform 0.3s ease;
-            margin-left: 5px;
-        }
+.menu-item-has-children:hover > a::after {
+  transform: rotate(180deg);
+}
 
-        .menu-item-has-children:hover > a::after {
-            transform: rotate(180deg);
-        }
+.sub-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: #fff;
+  min-width: 200px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+  border-radius: 8px;
+  padding: 10px 0;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: all 0.3s ease;
+  z-index: 1000;
+}
 
-        .sub-menu {
-            position: absolute;
-            top: 100%;
-            left: 0;
-            background: #ffffff;
-            min-width: 200px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-            border-radius: 8px;
-            padding: 10px 0;
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(-10px);
-            transition: all 0.3s ease;
-            z-index: 1000;
-        }
+.menu-item-has-children:hover .sub-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
 
-        .menu-item-has-children:hover .sub-menu {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0);
-        }
+.sub-menu a {
+  padding: 10px 20px;
+  display: block;
+  font-size: 14px;
+  color: #002134 !important;
+}
 
-        .sub-menu li {
-            list-style: none;
-        }
+.sub-menu a:hover {
+  background: #f8f9fa;
+  color: #01b2b8 !important;
+}
 
-        .sub-menu a {
-            color: #002134 !important;
-            padding: 10px 20px;
-            display: block;
-            font-size: 14px;
-        }
+.search-icon a {
+  font-size: 20px;
+  cursor: pointer;
+  color: #000;
+  transition: color 0.3s ease;
+}
 
-        .sub-menu a:hover {
-            background: #f8f9fa;
-            color: #01b2b8 !important;
-        }
+.search-icon a:hover {
+  color: #01b2b8;
+}
 
-        .search-icon a {
-            color: white;
-            font-size: 20px;
-            cursor: pointer;
-            transition: color 0.3s ease;
-        }
+.call-to-action .wp-block-button__link {
+  background: #01b2b8;
+  color: white;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 16px;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  transition: all 0.3s ease;
+}
 
-        .search-icon a:hover {
-            color: #01b2b8;
-        }
+.call-to-action .wp-block-button__link:hover {
+  background: #01a2a7;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(1, 178, 184, 0.3);
+}
 
-        .call-to-action .wp-block-button__link {
-            background: #01b2b8;
-            color: white;
-            padding: 12px 24px;
-            border: none;
-            border-radius: 8px;
-            font-weight: 600;
-            font-size: 16px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            display: inline-block;
-        }
+/* Two-row Header + Centered Logo */
+.two-row-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
-        .call-to-action .wp-block-button__link:hover {
-            background: #01a2a7;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 15px rgba(1, 178, 184, 0.3);
-        }
+.top-row {
+  position: relative;
+  width: 100%;
+  height: 90px;
+  display: flex;
+  justify-content: flex-end;
+  padding: 0 30px;
+}
 
+.logo-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+}
+
+.logo-center img.custom-logo {
+  height: 90px;
+  width: auto;
+  display: block;
+}
+
+.bottom-row {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: 10px 0;
+  border-top: 1px solid #e0e0e0;
+}
+
+/* Scrolled-Dark Overrides */
+.main-navigation-container.scrolled-dark {
+  background-color: #000;
+  color: #fff;
+}
+
+.main-navigation-container.scrolled-dark .nav-menu li a,
+.main-navigation-container.scrolled-dark .top-right-links a {
+  color: #fff;
+}
+
+/* Media Queries */
+@media (max-width: 1024px) {
+  .hero-container {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    text-align: center;
+  }
+
+  .hero-text h1 {
+    font-size: 36px;
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .stat-number {
+    font-size: 36px;
+  }
+
+  .nav-menu {
+    gap: 25px;
+  }
+
+  .menu-item a {
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 768px) {
+  .main-navigation .nav-menu {
+    display: none;
+  }
+
+  .menu-toggle {
+    display: block;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    padding: 10px;
+    z-index: 1001;
+  }
+
+  .hero-section {
+    padding: 56px 0;
+  }
+
+  .hero-text h1 {
+    font-size: 32px;
+  }
+
+  .hero-container {
+    padding: 0 16px;
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .stat-item {
+    margin-bottom: 16px;
+  }
+
+  .awards-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .header-content-wrapper {
+    padding: 0 16px;
+  }
+
+  .custom-logo {
+    height: 40px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-text h1 {
+    font-size: 28px;
+  }
+
+  .hero-text p {
+    font-size: 16px;
+  }
+
+  .periodic-element {
+    min-width: 45px;
+    padding: 8px;
+  }
+
+  .element-symbol {
+    font-size: 18px;
+  }
+
+  .element-number,
+  .element-name {
+    font-size: 8px;
+  }
+}
+
+
+       
         /* Hero Section */
         .hero-section {
             background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
@@ -670,95 +817,6 @@
     align-items: center;
     padding: 0;
 }
-/* Header White Version */
-.white-header {
-  background: #ffffff;
-  color: #404040;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.06);
-  position: fixed;
-  width: 100%;
-  z-index: 1000;
-  top: 0;
-  left: 0;
-  right: 0;
-}
-
-/* Header Wrapper */
-.two-row-header {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 0;
-}
-
-/* Top Row */
-.top-row {
-  position: relative;
-  width: 100%;
-  height: 90px; /* Increased from 60px */
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  padding: 0 30px;
-}
-
-/* Logo Centered */
-.logo-center {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%); /* Vertically and horizontally center */
-  z-index: 2;
-}
-
-
-.logo-center img.custom-logo {
-  height: 60px;
-  width: auto;
-  display: block;
-}
-
-/* Right Side Links */
-.top-right-links {
-  display: flex;
-  gap: 20px;
-  align-items: center;
-}
-
-.top-right-links a {
-  color: #000;
-  text-decoration: none;
-  font-size: 14px;
-  font-weight: 500;
-}
-
-/* Bottom Row Menu */
-.bottom-row {
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  padding: 10px 0;
-  border-top: 1px solid #e0e0e0;
-}
-
-.nav-menu {
-  display: flex;
-  gap: 40px;
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.nav-menu li a {
-  color: #000000;
-  text-decoration: none;
-  font-size: 16px;
-  font-weight: 500;
-}
-
-.nav-menu li a:hover {
-  text-decoration: underline;
-}
 
 
     </style>
@@ -766,8 +824,9 @@
 <body>
     <!-- Header -->
            
-		   
-		   <header class="main-navigation-container white-header">
+	
+<header class="main-navigation-container">
+
   <div class="header-content-wrapper two-row-header">
     
     <div class="top-row">
@@ -985,18 +1044,22 @@
     </section>
 
     <script>
+
         // Add functionality when DOM is loaded
-        document.addEventListener('DOMContentLoaded', function() {
-            // Sticky header on scroll
-            const header = document.querySelector('.main-navigation-container');
-            
-            window.addEventListener('scroll', function() {
-                if (window.scrollY > 100) {
-                    header.classList.add('scrolled');
-                } else {
-                    header.classList.remove('scrolled');
-                }
-            });
+    document.addEventListener('DOMContentLoaded', function () {
+ const header = document.querySelector('.main-navigation-container');
+
+  window.addEventListener('scroll', function () {
+    console.log("scrollY: ", window.scrollY); // 🧪 Debug line
+
+    if (window.scrollY > 50) {
+      header.classList.add('scrolled-dark');
+      console.log(">> scrolled-dark added"); // 🧪
+    } else {
+      header.classList.remove('scrolled-dark');
+      console.log(">> scrolled-dark removed"); // 🧪
+    }
+  });
 
             // Mobile menu toggle
             const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
@@ -1112,6 +1175,8 @@
                 });
             });
         });
+		
+	
     </script>
 </body>
 </html>
